@@ -21,10 +21,10 @@ posts = [
     }
 ]
 
-@app.route("/jon")
-def hello_world():
-    sum = add.sum
-    return f"<p>Hello, World!</p> {sum}"
+@app.route("/chat")
+def chat():
+    ss = add.sum
+    return render_template('chat.html', number = ss)
 
 
 @app.route("/")
