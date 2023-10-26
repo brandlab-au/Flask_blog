@@ -1,19 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Chate Page </h1>
-              <h3>This will be a chat: Price today AAPL 
-              <a class="nav-item nav-link" href="{{ url_for('home') }}">{{number}}</a>
-              </h3>
-
+            
         <body>
-            <h1>Enter User Input</h1>
+            <h2>Enter a Stock price </h2>
             <form method="POST">
                 <input type="text" name="user_input" placeholder="Enter your input">
                 <button type="submit">Submit</button>
             </form>
-            {% if user_input %}
-                <h2>You entered: {{ user_input }}</h2>
-            {% endif %}
+                {% if user_input %}
+            <h2>You entered: {{ user_input }}</h2>
+                {% if calculation_results %}
+            <h3>Calculations:</h3>
+            <ul>
+                {% for key, value in calculation_results.items() %}
+                     <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+      <h3>For now the closing price  
+      <a class="nav-item nav-link" href="{{ url_for('home') }}">${{calculation_results['Closig Price']}}</a>
+      </h3>
+
         </body>
 
               <a href="https://i.imgur.com/jI71D5T.jpg">

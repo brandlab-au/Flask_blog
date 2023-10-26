@@ -3,11 +3,9 @@ from flaskblog import app
 from flaskblog.forms import RegistrationForm, LoginForm
 from flaskblog.models import User, Post
 from flaskblog import add
-from markupsafe import escape
 
-
-user_input = 'AAPL'
-
+user_input="AAPL"
+calculation_results = None
 posts = [
     {
         'author': 'Corey Schafer',
@@ -25,13 +23,15 @@ posts = [
 
 @app.route("/chat",methods=['GET', 'POST'])
 def chat():
-    global user_input
+    global user_input, calculation_results
     if request.method == 'POST':
-        user_input = request.form['user_input']
-        add.process_input(user_input)  # Pass user input to a different module function
-    return render_template('chat.html', user_input=user_input)
-    ss = add.closing_price
-    return render_template('chat.html', number = ss)
+        user_input = request.form['user_input']  # Convert user input to float if needed
+        result1, result2 = add.process_input(user_input)
+        calculation_results = {'Closig Price': result1, 'Opening price': result2}
+    return render_template('chat.html', user_input=user_input, calculation_results=calculation_results)
+
+    
+
 
 
 @app.route("/")
