@@ -1,12 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>About Page </h1>
-              <h3>This will be a chat and so so more 
+    <h1>Chate Page </h1>
+              <h3>This will be a chat: Price today AAPL 
               <a class="nav-item nav-link" href="{{ url_for('home') }}">{{number}}</a>
               </h3>
-              
+
+        <body>
+            <h1>Enter User Input</h1>
+            <form method="POST">
+                <input type="text" name="user_input" placeholder="Enter your input">
+                <button type="submit">Submit</button>
+            </form>
+            {% if user_input %}
+                <h2>You entered: {{ user_input }}</h2>
+            {% endif %}
+        </body>
+
               <a href="https://i.imgur.com/jI71D5T.jpg">
-              <img src="https://pbs.twimg.com/media/F9XEd0RXoAArcuR?format=jpg&name=medium" alt="A nice image from the internet" width="700" height="400">
+              <img src="https://media.gettyimages.com/id/1201441079/vector/nlp-and-machine-learning-conceptual-illustration.jpg?s=612x612&w=gi&k=20&c=fv6fWOObjBxcHPuwOlt1q344BesdfjM14GYR5VZQP7Q=" alt="A nice image from the internet" width="700" height="400">
                 </a>
 {% endblock content %}
     

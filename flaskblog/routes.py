@@ -1,10 +1,12 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app
 from flaskblog.forms import RegistrationForm, LoginForm
 from flaskblog.models import User, Post
 from flaskblog import add
 from markupsafe import escape
 
+
+user_input = 'AAPL'
 
 posts = [
     {
@@ -21,9 +23,14 @@ posts = [
     }
 ]
 
-@app.route("/chat")
+@app.route("/chat",methods=['GET', 'POST'])
 def chat():
-    ss = add.sum
+    global user_input
+    if request.method == 'POST':
+        user_input = request.form['user_input']
+        add.process_input(user_input)  # Pass user input to a different module function
+    return render_template('chat.html', user_input=user_input)
+    ss = add.closing_price
     return render_template('chat.html', number = ss)
 
 
