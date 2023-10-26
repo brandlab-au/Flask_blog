@@ -23,3 +23,7 @@ six==1.11.0
 SQLAlchemy==1.2.7
 Werkzeug==0.14.1
 WTForms==2.1
+
+min 19 start talking about https://www.youtube.com/watch?v=cYWiDiIUxQc&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=4d
+
+talkting alckamy

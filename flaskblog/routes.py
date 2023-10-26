@@ -2,6 +2,8 @@ from flask import render_template, url_for, flash, redirect
 from flaskblog import app
 from flaskblog.forms import RegistrationForm, LoginForm
 from flaskblog.models import User, Post
+from flaskblog import add
+from markupsafe import escape
 
 
 posts = [
@@ -19,6 +21,11 @@ posts = [
     }
 ]
 
+@app.route("/jon")
+def hello_world():
+    sum = add.sum
+    return f"<p>Hello, World!</p> {sum}"
+
 
 @app.route("/")
 @app.route("/home")
@@ -28,7 +35,7 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about.html', title='About',)
 
 
 @app.route("/register", methods=['GET', 'POST'])
